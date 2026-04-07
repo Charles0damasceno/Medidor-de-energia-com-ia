@@ -1,0 +1,43 @@
+# =============================================================================
+# Monitor Energia — dependências Python (API FastAPI em backend/)
+# Python 3.11+ recomendado
+#
+# Instalação (raiz do repositório):
+#   pip install -r requirements.txt
+#
+# Ou a partir da pasta backend:
+#   cd backend && pip install -r requirements.txt
+#
+# Frontend (React/Vite): use npm — ver frontend/package.json e package.json (raiz)
+# =============================================================================
+
+# API e servidor
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+python-multipart==0.0.17
+
+# Configuração e validação
+pydantic-settings==2.6.1
+python-dotenv==1.0.1
+
+# Banco de dados
+sqlalchemy==2.0.36
+alembic==1.14.0
+asyncpg==0.30.0
+aiosqlite==0.20.0
+psycopg2-binary==2.9.10
+
+# Autenticação e segredos
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+cryptography==43.0.3
+
+# HTTP cliente (integrações Tuya/Solarman/OpenWeather, OpenAI via REST)
+httpx==0.28.1
+
+# Cache opcional
+redis==5.2.1
+
+# Previsões / análise (forecast_service, ai_insights_service)
+numpy==2.2.2
+scikit-learn==1.6.1
