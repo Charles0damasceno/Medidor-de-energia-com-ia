@@ -1,0 +1,19 @@
+{
+  "name": "monitor-energia",
+  "private": true,
+  "description": "Backend FastAPI + frontend Vite — um comando para subir tudo",
+  "scripts": {
+    "ports:free": "npx --yes kill-port 8080 5173",
+    "rodar": "npm run ports:free && concurrently -k -n api,web -c cyan,magenta \"npm run dev:backend:keepalive\" \"npm run dev:frontend\"",
+    "rodar:plain": "npm run ports:free && concurrently -k -n api,web -c cyan,magenta \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev": "npm run rodar",
+    "dev:backend": "cd backend && cross-env USE_LOCAL_SQLITE=true python -m uvicorn app.main:app --host 127.0.0.1 --port 8080",
+    "dev:backend:keepalive": "node scripts/keep-api-alive.mjs",
+    "dev:frontend": "cd frontend && npm run dev",
+    "start:api": "cd backend && python -m uvicorn app.main:app --host 0.0.0.0 --port 8080"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3"
+  }
+}
